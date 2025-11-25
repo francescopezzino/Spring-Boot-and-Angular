@@ -1,11 +1,12 @@
 package com.example.springboot.superheroes.antiHero.controller;
 
-import com.example.springboot.superheroes.antiHero.dto.AntiHeroDto;
+import com.example.springboot.superheroes.antiHero.dto  .AntiHeroDto;
 import com.example.springboot.superheroes.antiHero.entity.AntiHeroEntity;
 import com.example.springboot.superheroes.antiHero.service.AntiHeroService;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -15,12 +16,20 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-@AllArgsConstructor
+
 @RestController
 @RequestMapping("api/v1/anti-heroes")
 public class AntiHeroController {
+
+
     private final AntiHeroService service;
+
     private final ModelMapper mapper;
+
+    public AntiHeroController(AntiHeroService service, ModelMapper mapper) {
+        this.service = service;
+        this.mapper = mapper;
+    }
 
     @GetMapping("/{id}")
     public AntiHeroDto getAntiHeroById(@PathVariable("id") UUID id) {
@@ -32,6 +41,7 @@ public class AntiHeroController {
             @PathVariable("id") UUID id,
             @Valid @RequestBody AntiHeroDto antiHeroDto
     ) {
+
         if (!id.equals(antiHeroDto.getId())) throw new
                 ResponseStatusException(
                 HttpStatus.BAD_REQUEST,
