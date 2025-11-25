@@ -4,9 +4,7 @@ import com.example.springboot.superheroes.antiHero.dto  .AntiHeroDto;
 import com.example.springboot.superheroes.antiHero.entity.AntiHeroEntity;
 import com.example.springboot.superheroes.antiHero.service.AntiHeroService;
 import jakarta.validation.Valid;
-import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -89,7 +87,7 @@ public class AntiHeroController {
         var antiHeroList = StreamSupport
                 .stream(service.findAllAntiHeroes().spliterator(), false)
                 .skip(toSkip).limit(pageable.getPageSize())
-                .collect(Collectors.toList());
+                .toList(); // replaced from --> :  .collect(Collectors.toList());
         return antiHeroList
                 .stream()
                 .map(this::convertToDto)
