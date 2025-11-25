@@ -2,6 +2,7 @@ package com.example.springboot.superheroes.antiHero.dto;
 
 import java.util.UUID;
 
+
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +10,7 @@ import lombok.Setter;
 @Setter
 public class AntiHeroDto {
     private UUID id;
-    @jakarta.validation.constraints.NotNull(message = "First Name is required")
+    @NotNull(message = "First Name is required")
     private String firstName;
     private String lastName;
     private String house;

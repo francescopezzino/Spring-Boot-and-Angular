@@ -29,6 +29,7 @@ public class AntiHeroService {
         return repo.save(antiHero);
     }
     public void updateAntiHero(UUID id, AntiHeroEntity antiHero) {
+        findOrThrow(id);
         repo.save(antiHero);
     }
 
