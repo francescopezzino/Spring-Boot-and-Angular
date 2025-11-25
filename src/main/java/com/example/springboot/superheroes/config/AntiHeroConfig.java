@@ -1,4 +1,4 @@
-package com.example.springboot.superheroes.antiHero.controller.config;
+package com.example.springboot.superheroes.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -14,7 +14,10 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
-
+/**
+ * We can combine the application of CORS at both the controller and method levels in our application
+ */
+@CrossOrigin(allowedHeaders = "Content-type")
 @RestController
 @RequestMapping("api/v1/anti-heroes")
 public class AntiHeroController {
@@ -80,6 +83,13 @@ public class AntiHeroController {
 //                .collect(Collectors.toList());
 //    }
 
+    /*
+    We can enable CORS on a single endpoint;
+    this means that we can specify different permitted origins for other endpoints.
+    We can also specify the configuration of the CORS policy by adding the values of the origin,
+    methods, allowedHeaders, exposedHeaders, allowedCredentials, and maxAge
+     */
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping
     public List<AntiHeroDto> getAntiHeroes(Pageable pageable) {
         int toSkip = pageable.getPageSize() *
