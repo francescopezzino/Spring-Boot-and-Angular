@@ -3,9 +3,10 @@ package com.example.springboot.superheroes.antiHero.controller;
 import com.example.springboot.superheroes.antiHero.dto  .AntiHeroDto;
 import com.example.springboot.superheroes.antiHero.entity.AntiHeroEntity;
 import com.example.springboot.superheroes.antiHero.service.AntiHeroService;
-import jakarta.validation.Valid;
+import javax.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.data.domain.Pageable;
@@ -20,6 +21,7 @@ import java.util.stream.StreamSupport;
 @CrossOrigin(allowedHeaders = "Content-type")
 @RestController
 @RequestMapping("api/v1/anti-heroes")
+@PreAuthorize("isAuthenticated()")
 public class AntiHeroController {
 
 

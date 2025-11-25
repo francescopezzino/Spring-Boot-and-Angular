@@ -3,7 +3,7 @@ package com.example.springboot.superheroes.antiHero.dto;
 import java.util.UUID;
 
 
-import jakarta.validation.constraints.NotNull;
+import javax.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
