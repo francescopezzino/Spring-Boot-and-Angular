@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Data
-@RedisHash("AntiHero")
+//  @RedisHash("AntiHero") enable, start redis-windows and Redis insigh to use Redis
 @Entity
 @Table
 @AllArgsConstructor
