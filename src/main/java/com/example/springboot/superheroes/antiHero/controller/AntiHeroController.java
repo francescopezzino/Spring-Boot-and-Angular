@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
-
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -70,11 +70,25 @@ public class AntiHeroController {
      * Since this returns to an Iterable instance, we will convert it into a stream and
      * transform it into a list using Collectors.toList()
      */
+//    @GetMapping
+//    public List<AntiHeroDto> getAntiHeroes() {
+//        var antiHeroList = StreamSupport
+//                .stream(service.findAllAntiHeroes().spliterator(),
+//                        false)
+//                .collect(Collectors.toList());
+//        return antiHeroList
+//                .stream()
+//                .map(this::convertToDto)
+//                .collect(Collectors.toList());
+//    }
+
     @GetMapping
-    public List<AntiHeroDto> getAntiHeroes() {
+    public List<AntiHeroDto> getAntiHeroes(Pageable pageable) {
+        int toSkip = pageable.getPageSize() *
+                pageable.getPageNumber();
         var antiHeroList = StreamSupport
-                .stream(service.findAllAntiHeroes().spliterator(),
-                        false)
+                .stream(service.findAllAntiHeroes().spliterator(), false)
+                .skip(toSkip).limit(pageable.getPageSize())
                 .collect(Collectors.toList());
         return antiHeroList
                 .stream()
