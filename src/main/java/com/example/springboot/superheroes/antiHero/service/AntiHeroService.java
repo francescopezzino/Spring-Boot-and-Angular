@@ -3,18 +3,17 @@ package com.example.springboot.superheroes.antiHero.service;
 import com.example.springboot.superheroes.antiHero.entity.AntiHeroEntity;
 import com.example.springboot.superheroes.antiHero.repository.AntiHeroRepository;
 import com.example.springboot.superheroes.exception.NotFoundException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 import java.util.UUID;
 
 @Service
+@RequiredArgsConstructor
 public class AntiHeroService {
     private final AntiHeroRepository repo;
 
-    public AntiHeroService(AntiHeroRepository repo) {
-        this.repo = repo;
-    }
     public Iterable<AntiHeroEntity> findAllAntiHeroes() {
         return repo.findAll();
     }
