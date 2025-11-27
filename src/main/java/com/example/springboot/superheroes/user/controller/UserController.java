@@ -2,7 +2,6 @@ package com.example.springboot.superheroes.user.controller;
 
 import com.example.springboot.superheroes.user.data.UserDto;
 import com.example.springboot.superheroes.user.service.UserService;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
