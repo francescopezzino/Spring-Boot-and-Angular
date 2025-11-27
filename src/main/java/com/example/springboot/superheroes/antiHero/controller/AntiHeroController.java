@@ -4,6 +4,8 @@ import com.example.springboot.superheroes.antiHero.dto  .AntiHeroDto;
 import com.example.springboot.superheroes.antiHero.entity.AntiHeroEntity;
 import com.example.springboot.superheroes.antiHero.service.AntiHeroService;
 import javax.validation.Valid;
+
+import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -20,19 +22,14 @@ import java.util.stream.StreamSupport;
  */
 @CrossOrigin(allowedHeaders = "Content-type")
 @RestController
+@RequiredArgsConstructor
 @RequestMapping("api/v1/anti-heroes")
 @PreAuthorize("isAuthenticated()")
 public class AntiHeroController {
 
 
     private final AntiHeroService service;
-
     private final ModelMapper mapper;
-
-    public AntiHeroController(AntiHeroService service, ModelMapper mapper) {
-        this.service = service;
-        this.mapper = mapper;
-    }
 
     @GetMapping("/{id}")
     public AntiHeroDto getAntiHeroById(@PathVariable("id") UUID id) {
