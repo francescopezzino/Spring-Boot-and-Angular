@@ -3,6 +3,7 @@ package com.example.springboot.superheroes.user.controller;
 import com.example.springboot.superheroes.user.data.UserDto;
 import com.example.springboot.superheroes.user.service.UserService;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -12,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 @Log4j2
-@AllArgsConstructor
+@RequiredArgsConstructor
 @RestController
 public class UserController {
 
